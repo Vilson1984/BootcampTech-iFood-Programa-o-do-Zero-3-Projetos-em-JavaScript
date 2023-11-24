@@ -1,4 +1,6 @@
-# Desafios em JavaScript
+# Desafios em JavaScript :rocket:
+
+
 
 Este repositório contém três desafios simples implementados em JavaScript. Cada desafio aborda conceitos diferentes da linguagem. Abaixo estão as descrições de cada desafio e como utilizá-los:
 ## Desafio 1: Definindo o Nível do Herói
@@ -21,7 +23,8 @@ Uso:
 
     node index.js
 
-## Desafio 3: Jogo com Classes
+## Desafio 3: Jogo com Classes :mage: x :crossed_swords: 
+
 
 O terceiro desafio introduz o conceito de classes em JavaScript. Duas classes (character) são definidas para representar um guerreiro e um mago. Cada classe tem métodos para atacar e bloquear. O usuário escolhe entre guerreiro e mago, e as características do personagem são exibidas.
 
