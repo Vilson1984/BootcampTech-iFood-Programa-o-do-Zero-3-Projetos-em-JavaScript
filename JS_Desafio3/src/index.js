@@ -1,70 +1,65 @@
-//Writing classes's Game
-
-
-//
+// set readline necessary to make question for user
 const readline = require('readline');
 
 const choiceCharacter = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+    input: process.stdin,
+    output: process.stdout
 });
 
-//building class characters
-class character {
-    constructor(name, age, type, strike, defese) {
-        this.name = name
-        this.age = age
-        this.type = type
-        this.strike = strike
-        this.defese = defese
+//build class for characters
+class Character {
+    constructor(name, age, type, strike, defense) {
+        this.name = name;
+        this.age = age;
+        this.type = type;
+        this.strike = strike;
+        this.defense = defense;
     }
 
     attack() {
-        console.log(`O ${this.name} atacou usando ${this.strike}`)
+        console.log(`\nO ${this.name} atacou usando ${this.strike}`);
     }
 
     block() {
-        console.log(`O ${this.name} defendeu usando ${this.defese}`)
+        console.log(`\nO ${this.name} defendeu usando ${this.defense}`);
     }
 }
 
-//set characters
-let warrior = new character("Aragorn", 39, "guerreiro", "espada", "escudo")
-let wizard = new character("Gandalf", 85, "mago", "magia", "magia de defesa")
+//set information about characters
+const characters = [
+    new Character("Aragorn", 39, "guerreiro", "espada", "escudo"),
+    new Character("Gandalf", 85, "mago", "magia", "magia de defesa"),
+    new Character("Sheng", 25, "monge", "artes-marciais", "defesa"),
+    new Character("Hatori", 25, "ninja", "Shuriken", "bomba de fumaça")
+];
 
-
-//priting characters
-//console.log(warrior, wizard)
-
+//Show Character choosen
+function displayCharacterInfo(character) {
+    console.log(`\nVocê escolheu o personagem ${character.name}.\nEle possui as seguintes características:\nEle tem ${character.age} anos e sua categoria é ${character.type}.`);
+}
 
 //Choice the character
 function choice() {
+    console.log("Escolha seu personagem:");
 
- 
-    choiceCharacter.question("Escolha seu personagem. \nPressione 1 para guerreiro ou 2 para mago.\n\n", (value) => {
+    //loop to define the character under var index
+    for (let i = 0; i < characters.length; i++) {
+        console.log(`Pressione ${i + 1} para escolher ${characters[i].type}`);
+    }
 
-        if (value === "1") {
-            console.log(`Você escolheu o personagem ${warrior.name}.\n Ele possui as seguintes características: \nEle têm ${warrior.age} anos e sua categoria é ${warrior.type}.`)
-                
-            warrior.attack()
-            warrior.block()
+    //ask to user a characters's number 
+    choiceCharacter.question("\n\nDigite o número correspondente ao personagem desejado:\n", (value) => {
+        const index = parseInt(value) - 1;
 
-        } else if (value === "2"){
-            console.log(`Você escolheu o personagem ${wizard.name}.\n Ele possui as seguintes características: \nEle têm ${wizard.age} anos e sua categoria é ${wizard.type}.`)
-            wizard.attack()
-            wizard.block() 
+        if (index >= 0 && index < characters.length) {
+            displayCharacterInfo(characters[index]);
         } else {
-            console.log("Opção inválida.")
+            console.log("Opção inválida.");
         }
- 
+
+        characters[index].attack()
         choiceCharacter.close();
-  
     });
- 
-  
 }
 
-
-choice()
-
-//character.attack()
+choice();
